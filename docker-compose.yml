@@ -16,6 +16,10 @@ services:
     image: redis:alpine
     ports:
       - 6379:6379
+    restart: unless-stopped
+    volumes:
+    - ./redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
 
   mongo-express:
     image: mongo-express
